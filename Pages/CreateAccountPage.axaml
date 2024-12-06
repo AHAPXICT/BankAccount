@@ -1,0 +1,32 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:vm="using:BankAccount.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="BankAccount.CreateAccountPage"
+			 x:DataType="vm:MainWindowViewModel"
+			 x:CompileBindings="True">
+
+	<Grid ColumnDefinitions="0.4*, *, 0.05*" RowDefinitions="*, *, *, *, *, *, *, *">
+		<Button Content="Back" Click="BackClick" Margin="5"/>
+		<TextBlock Text="Name:" Grid.Row="1" Grid.Column="0" Margin="10" VerticalAlignment="Top"/>
+		<TextBox Watermark="Enter your name" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" 
+			MaxLength="50" Text="{Binding CreateAccountVM.Name}"/>
+		<TextBlock Text="Surname:" Grid.Row="2" Grid.Column="0" Margin="10" VerticalAlignment="Top" />
+		<TextBox Watermark="Enter your surname"  Grid.Row="2" Grid.Column="1" VerticalAlignment="Top"
+			MaxLength="50" Text="{Binding CreateAccountVM.Surname}"/>
+		<TextBlock Text="Patronymic:" Grid.Row="3" Grid.Column="0" Margin="10" VerticalAlignment="Top"/>
+		<TextBox Watermark="Enter your patronymic"  Grid.Row="3" Grid.Column="1" VerticalAlignment="Top"
+			MaxLength="50" Text="{Binding CreateAccountVM.Patronymic}"/>
+
+		<TextBlock Text="Birthday" Grid.Row="4" Grid.Column="0" Margin="10" VerticalAlignment="Top"/>
+		<DatePicker Name="BirthSelector" Grid.Row="4" Grid.Column="1" VerticalAlignment="Top" 
+					SelectedDate="{Binding CreateAccountVM.DateOfBirth}" HorizontalAlignment="Left"/>
+		<TextBlock Text="Passport number:" Grid.Row="5" Grid.Column="0" Margin="10" VerticalAlignment="Top"/>
+		<MaskedTextBox Mask="0000 000000" LetterSpacing="1.5" Grid.Row="5" Grid.Column="1" 
+					   VerticalAlignment="Top" Text="{Binding CreateAccountVM.PassportNumber}">
+		</MaskedTextBox>
+		<Button Command="{Binding CreateAccountVM.CreateClick}" Grid.Row="6" Grid.ColumnSpan="2" Content="Create account" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+	</Grid>
+</UserControl>
